@@ -1,5 +1,6 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
+//
+// 半朗伯模型
+//
 Shader "Unity Shaders Book/Chapter 6/HalfLambert" {
     Properties {
         _Diffuse ("Diffuse", Color) = (1, 1, 1, 1)

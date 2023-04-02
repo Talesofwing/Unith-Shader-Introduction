@@ -1,3 +1,6 @@
+//
+// 逐頂點: 高光, Phong模型
+//
 Shader "Unity Shaders Book/Chapter 6/Specular Vertex-Level" {
     Properties {
         _Diffuse ("Diffuse", Color) = (1, 1, 1, 1)

@@ -1,5 +1,6 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
+// 
+// 逐像素: 漫反射
+//
 Shader "Unity Shaders Book/Chapter 6/Diffuse Pixel-Level" {
     Properties {
         _Diffuse ("Diffuse", Color) = (1, 1, 1, 1)

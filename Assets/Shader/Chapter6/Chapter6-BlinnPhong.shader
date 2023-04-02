@@ -1,3 +1,6 @@
+//
+// Blinn-Phong模型
+//
 Shader "Unity Shaders Book/Chapter 6/Specular Pixel-Level" {
     Properties {
         _Diffuse ("Diffuse", Color) = (1, 1, 1, 1)
@@ -38,6 +41,7 @@ Shader "Unity Shaders Book/Chapter 6/Specular Pixel-Level" {
 
                 // Transform the normal from object space to world space
                 o.worldNormal = normalize(mul (v.normal, (float3x3)unity_WorldToObject));
+                
                 // Transform the vertex from object space to world space
                 o.worldPos = mul (unity_ObjectToWorld, v.vertex).xyz;
                 
@@ -56,8 +60,10 @@ Shader "Unity Shaders Book/Chapter 6/Specular Pixel-Level" {
 
                 // Get the view direction in world space
                 fixed3 viewDir = normalize (_WorldSpaceCameraPos.xyz - i.worldPos.xyz);
+
                 // Get the half directino in world space
                 fixed3 halfDir = normalize (worldLight + viewDir);
+
                 // Compute specular term
                 fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow (max (0, dot (i.worldNormal, halfDir)), _Gloss);
                 
