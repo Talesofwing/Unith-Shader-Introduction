@@ -1,3 +1,6 @@
+//
+// Normal Map: 變換到世界空間中計算
+//
 Shader "Unity Shaders Book/Chapter 7/Normal Map In World Space" {
     Properties {
         _Color ("Color Tint", Color) = (1, 1, 1, 1)
@@ -92,6 +95,7 @@ Shader "Unity Shaders Book/Chapter 7/Normal Map In World Space" {
                 fixed3 albedo = tex2D (_MainTex, i.uv).rgb * _Color.rgb;
 
                 fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz * albedo;
+
                 fixed3 diffuse = _LightColor0.rgb * albedo * max (0, dot (bump, lightDir));
 
                 fixed3 halfDir = normalize(lightDir + viewDir);

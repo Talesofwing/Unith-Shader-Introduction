@@ -1,3 +1,6 @@
+//
+// Normal Map: 變換到切線空間中計算
+//
 Shader "Unity Shaders Book/Chapter 7/Normal Map In Tangent Space" {
     Properties {
         _Color ("Color Tint", Color) = (1, 1, 1, 1)
@@ -58,6 +61,7 @@ Shader "Unity Shaders Book/Chapter 7/Normal Map In Tangent Space" {
                 fixed3 worldBinormal = cross (worldNormal, worldTangent) * i.tangent.w;
 
                 // TBN是正交矩陣，所以TBN的逆就是TBN的轉置
+                // 行填充
                 float3x3 worldToTangent = float3x3 (worldTangent, worldBinormal, worldNormal);
                 
                 // Transform the light direction from object space to tangent space
@@ -87,11 +91,12 @@ Shader "Unity Shaders Book/Chapter 7/Normal Map In Tangent Space" {
                 fixed3 albedo = tex2D (_MainTex, i.uv).rgb * _Color.rgb;
 
                 fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz * albedo;
+                
                 fixed3 diffuse = _LightColor0.rgb * albedo * max (0, dot (tangentNormal, tangentLightDir));
 
                 fixed3 halfDir = normalize(tangentLightDir + tangentViewDir);
                 fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow (max (0, dot (tangentNormal, halfDir)), _Gloss);
-                
+
                 return float4 (ambient + diffuse + specular, 1.00f);
             }
             

@@ -1,7 +1,7 @@
 //
 // Blinn-Phong模型
 //
-Shader "Unity Shaders Book/Chapter 6/Specular Pixel-Level" {
+Shader "Unity Shaders Book/Chapter 6/Blinn Phong" {
     Properties {
         _Diffuse ("Diffuse", Color) = (1, 1, 1, 1)
         _Specular ("Specular", Color) = (1, 1, 1, 1)
