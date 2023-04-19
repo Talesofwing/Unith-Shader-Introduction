@@ -138,7 +138,7 @@ Shader "Unity Shaders Book/Chapter 9/Alpha Test With Shadow" {
                 fixed3 worldLightDir = normalize (_WorldSpaceLightPos0.xyz);
 
                 fixed4 texColor = tex2D (_MainTex, i.uv);
-                clip (texColor - _Cutoff);
+                clip (texColor.a - _Cutoff);
 
                 fixed3 albedo = texColor.rgb * _Color.rgb;
 
