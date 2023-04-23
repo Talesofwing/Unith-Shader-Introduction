@@ -131,6 +131,7 @@ Shader "Unity Shaders Book/Common/Bumped Specular" {
             float4 _MainTex_ST;
             sampler2D _BumpMap;
             float4 _BumpMap_ST;
+            float _BumpScale;
             fixed4 _Specular;
             float _Gloss;
 
@@ -174,10 +175,12 @@ Shader "Unity Shaders Book/Common/Bumped Specular" {
 
             fixed4 frag (v2f i) : SV_Target {
                 float3 worldPos = float3 (i.TtoW0.w, i.TtoW1.w, i.TtoW2.w);
-                fixed3 lightDir = normalize (_WorldSpaceLightPos0.xyz);
+                fixed3 lightDir = normalize (_WorldSpaceLightPos0.xyz - worldPos);  // 非平行光
                 fixed3 viewDir = normalize (_WorldSpaceCameraPos.xyz - worldPos);
 
                 fixed3 bump = UnpackNormal (tex2D (_BumpMap, i.uv.zw));
+                bump.xy *= _BumpScale;
+                bump.z = sqrt (1.0 - saturate (dot (bump.xy, bump.xy)));
                 bump = normalize (half3 (dot (i.TtoW0.xyz, bump), dot (i.TtoW1.xyz, bump), dot (i.TtoW2.xyz, bump)));
 
                 fixed3 albedo = tex2D (_MainTex, i.uv.xy).rgb * _Color.rgb;
