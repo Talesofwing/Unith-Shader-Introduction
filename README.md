@@ -6,4 +6,4 @@
 
 ### 相關參考
 
-1. [Screen Space Shadow Mapping](https://github.com/Talesofwing/Unity-ScreenSpaceShadowMapping)
+1. [Unity Rendering Playground](https://github.com/Talesofwing/Unity-Rendering-Playground)
