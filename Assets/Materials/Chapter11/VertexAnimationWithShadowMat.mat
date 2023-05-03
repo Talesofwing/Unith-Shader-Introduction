@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterMat
-  m_Shader: {fileID: 4800000, guid: 8518171ad75b0b043b889f494553f4f7, type: 3}
+  m_Name: VertexAnimationWithShadowMat
+  m_Shader: {fileID: 4800000, guid: 0143cccec5dbc614c935b0cb094bbde3, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -40,5 +40,5 @@ Material:
     - _Speed: 0.4
     - _VerticalAmount: 8
     m_Colors:
-    - _Color: {r: 0.28627452, g: 0.67058825, b: 0.61960787, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
