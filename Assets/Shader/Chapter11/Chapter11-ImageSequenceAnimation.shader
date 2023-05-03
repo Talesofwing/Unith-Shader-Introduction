@@ -48,8 +48,15 @@ Shader "Unity Shaders Book/Chapter 11/Image Sequence Animation" {
             }
 
             fixed4 frag (v2f i) : SV_Target {
+                //
+                // time = 0; row += 1;
+                // 為了觀察是否成功從最上方開始取樣
+                //
+
                 float time = floor (_Time.y * _Speed);
+                // time = 0;
                 float row = floor (time / _HorizontalAmount);
+                // row += 1;
                 float column = time - row * _HorizontalAmount;
 
                 // 控制「取樣格」。
