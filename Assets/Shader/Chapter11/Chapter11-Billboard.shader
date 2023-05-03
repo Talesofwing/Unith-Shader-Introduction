@@ -69,7 +69,7 @@ Shader "Unity Shaders Book/Chapter 11/Billboard" {
                 float3 localPos = center + rightDir * centerOffs.x + upDir * centerOffs.y + normalDir * centerOffs.z;
 
                 o.pos = UnityObjectToClipPos (localPos);
-                o.uv = i.uv;
+                o.uv = TRANSFORM_TEX (i.uv, _MainTex);
 
                 return o;
             }
