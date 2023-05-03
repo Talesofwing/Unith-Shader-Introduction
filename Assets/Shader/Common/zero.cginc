@@ -8,4 +8,8 @@ inline float3 Refract (float3 i, float3 n, float eta) {
 	return t * (float3)(cost2 > 0);
 }
 
+inline fixed luminance (fixed4 color) {
+	return 0.2125 * color.r + 0.7154 * color.g + 0.0721 * color.b; 
+}
+
 #endif
