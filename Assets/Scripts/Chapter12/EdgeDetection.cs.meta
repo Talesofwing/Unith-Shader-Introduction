@@ -3,7 +3,8 @@ guid: e3a04921545fd5847af79e425fd4cbfd
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _edgeDetecterShader: {fileID: 4800000, guid: 58f4d1f2dd772ae419cf1324f3b6846e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
