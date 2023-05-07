@@ -12,4 +12,12 @@ inline fixed luminance (fixed4 color) {
 	return 0.2125 * color.r + 0.7154 * color.g + 0.0721 * color.b; 
 }
 
+// _ZBufferParams的值可以在官方文檔中查看
+inline fixed Linear01DepthValue (float z) {
+	return 1.0 / (_ZBufferParams.x * z + _ZBufferParams.y);
+}
+inline float LinearEyeDepthValue (float z) {
+	return 1.0 / (_ZBufferParams.z * z + _ZBufferParams.w);
+}
+
 #endif
