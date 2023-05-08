@@ -3,6 +3,15 @@ using UnityEngine;
 [ExecuteInEditMode]
 [RequireComponent (typeof (Camera))]
 public abstract class PostEffectsBase : MonoBehaviour {
+	private Camera _camera;
+	public Camera Cam {
+		get {
+			if (_camera == null)
+				_camera = GetComponent<Camera> ();
+
+			return _camera;
+		}
+	}
 
 	protected void Start () {
 		CheckResources ();
