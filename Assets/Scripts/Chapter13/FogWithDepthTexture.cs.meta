@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 179b873c06303c44a91834eef338d33b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _fogWithDepthTextureShader: {fileID: 4800000, guid: 25716864af9c13a49b02b954a9920e28, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
