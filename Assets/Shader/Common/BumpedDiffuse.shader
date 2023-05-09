@@ -4,7 +4,6 @@ Shader "Unity Shaders Book/Common/Bumped Diffuse" {
         _Color ("Color Tine", Color) = (1, 1, 1, 1)
         _MainTex ("Main Tex", 2D) = "white" {}
         _BumpMap ("Normal Map", 2D) = "bump" {}
-        _BumpScale ("Bump Scale", Float) = 1.0
     }
 
     SubShader {
@@ -28,7 +27,6 @@ Shader "Unity Shaders Book/Common/Bumped Diffuse" {
             float4 _MainTex_ST;
             sampler2D _BumpMap;
             float4 _BumpMap_ST;
-            float _BumpScale;
 
             struct a2v {
                 float4 vertex : POSITION;
@@ -58,9 +56,9 @@ Shader "Unity Shaders Book/Common/Bumped Diffuse" {
 
                 fixed3 worldPos = mul (unity_ObjectToWorld, v.vertex).xyz;
                 // fixed3 worldNormal = UnityObjectToWorldNormal (v.normal);
-                fixed3 worldNormal = normalize(mul (v.normal, unity_WorldToObject));
+                fixed3 worldNormal =  normalize (mul (v.normal, (float3x3)unity_WorldToObject));
                 // fixed3 worldTangent = UnityObjectToWorldDir (v.tangent.xyz);
-                fixed3 worldTangent = normalize(mul (unity_ObjectToWorld, v.tangent.xyz));      // 注意v.tangent.w分量
+                fixed3 worldTangent = normalize (mul (unity_ObjectToWorld, v.tangent.xyz));      // 注意v.tangent.w分量
                 // 注意叉乘的順序
                 fixed3 worldBinormal = cross (worldNormal, worldTangent) * v.tangent.w;
 
@@ -81,9 +79,8 @@ Shader "Unity Shaders Book/Common/Bumped Diffuse" {
                 fixed3 viewDir = normalize (_WorldSpaceCameraPos.xyz - worldPos);
 
                 fixed3 bump = UnpackNormal (tex2D (_BumpMap, i.uv.zw));
-                bump.xy *= _BumpScale;
-                bump.z = sqrt (1.0 - saturate (dot (bump.xy, bump.xy)));
-                bump = normalize (half3 (dot (i.TtoW0.xyz, bump), dot (i.TtoW1.xyz, bump), dot (i.TtoW2.xyz, bump)));
+				bump = normalize(half3(dot(i.TtoW0.xyz, bump), dot(i.TtoW1.xyz, bump), dot(i.TtoW2.xyz, bump)));
+
 
                 fixed3 albedo = tex2D (_MainTex, i.uv.xy).rgb * _Color.rgb;
 
