@@ -36,7 +36,6 @@ Shader "Unity Shaders Book/Chapter 13/Motion Blur With Depth Texture" {
                 o.uv_depth.y = 1 - o.uv_depth.y;
             #endif
 
-            o.uv = v.texcoord;
             return o;
         }
 
