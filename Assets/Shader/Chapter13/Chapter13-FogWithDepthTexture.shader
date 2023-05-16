@@ -1,4 +1,4 @@
-Shader "Unity Shaders Book/Chapter 13/Motion Blur With Depth Texture" {
+Shader "Unity Shaders Book/Chapter 13/Fog With Depth Texture" {
 
     Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
